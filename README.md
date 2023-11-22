@@ -20,4 +20,4 @@ Dependecias
 
   Pasos para la instalación:<br/>
   1-Descargar el proyecto<br/>
-  2-Yarn o Yarn install <br/>
+  2-Sobre la ruta ejecutar Yarn o Yarn install <br/>
