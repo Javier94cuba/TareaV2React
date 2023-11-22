@@ -1,6 +1,7 @@
 # TareaV2React
 
-Javier López  Info contacto: <br/>
+Javier López <br/>
+Info contacto: <br/>
 Email:jlopezhdez94@gmail.com<br/>
 Cell: 58386901
 
