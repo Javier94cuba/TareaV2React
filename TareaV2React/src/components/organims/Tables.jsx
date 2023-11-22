@@ -25,11 +25,16 @@ import { addListener } from "@reduxjs/toolkit";
     const [isCheckedi, setIsCheckedi] = useState(false);
     const [rolesaddi, setRolesAddi] = useState(roles.slice(0,4));
     const [hoveri, setHoveri] = useState(false);
+    const [isCheckedd, setIsCheckedd] = useState(false);
+    const [rolesaddd, setRolesAddd] = useState(roles.slice(0,4));
+    const [hoverd, setHoverd] = useState(false);
 
     const [click, setClick] = useState(false);
     const [clickA, setClickA] = useState(false);
     const [clickG, setClickG] = useState(false);
     const [clickS, setClickS] = useState(false);
+
+
   
     const handleOverE =  () => {
       setIsCheckedE(!isCheckedE)
@@ -231,6 +236,37 @@ const handleOveri =  () => {
   setRolesAddi(rolesaddi);
 }
 
+const handleOverd =  () => {
+  setIsCheckedd(!isCheckedd)
+  
+   }
+   
+     const handleventd = () => {
+      rolesaddd.map( rol => {
+       if (isCheckedd == false){
+         console.log(isCheckedd)
+         return {
+           ...rol,
+            insert: rol.update = "",
+            update: rol.update = "",
+            delete: rol.update = "",
+            modify: rol.update = "",
+            }
+       }else if(isCheckedd){
+         console.log(isCheckedd)
+         return {
+           ...rol,
+            insert: rol.update = "X",
+            update: rol.update = "X",
+            delete: rol.update = "X",
+            modify: rol.update = "X",
+     };
+   }
+ });
+ // Vuelve a renderizar con el nuevo _array_
+  setRolesAddd(rolesaddd);
+}
+
 //Cuando se hace un mouseover sobre el nombre del rol aparecerá en el extremo derecho de la celda un 
 //latón o ícono de eliminación que permitirá borrar el rol.
 
@@ -294,9 +330,8 @@ const handleOveri =  () => {
                        {hoveri == false ? 
                        <p>
                         {permissions[0].perm_in}
-                        </p> 
+                       </p> 
                         :
-                        
                         <input
                          id="idi"
                          name="insert"
@@ -309,6 +344,7 @@ const handleOveri =  () => {
                         
                         }
                         </div>  
+
                         </span>  
                         </td>
                       <td className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
@@ -334,7 +370,30 @@ const handleOveri =  () => {
                         }
                         </div> 
                           
-                          <a className="text-sm -mr-3">{permissions[0].perm_de}</a> 
+                      {/* <a className="text-sm -mr-3">
+                        {permissions[0].perm_de}
+                        
+                      </a>  */}
+                      <div className="text-sm mt-4 text-slate-700" onPointerEnter={() => setHoverd(true)}
+                      onPointerLeave={() => setHoverd(false)}>
+                       {hoverd == false ? 
+                       <p>
+                        {permissions[0].perm_de}
+                       </p> 
+                        :
+                        <input
+                         id="idi"
+                         name="insert"
+                         type="checkbox"
+                         checked={isCheckedd}
+                         onClick={handleventd}
+                         onChange={ handleOverd}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        }
+                        </div> 
+
+
                       </span>
                         </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 text-center">
