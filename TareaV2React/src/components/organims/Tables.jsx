@@ -2,12 +2,14 @@ import { useState } from "react"
 
 import { permissions } from "../Data/Data";
 import { roles } from "../Data/Data";
-  
+import { addListener } from "@reduxjs/toolkit";
+
   
   export default function Tables() {
     const [isChecked, setIsChecked] = useState(false);
     const [rolesadd, setRolesAdd] = useState(roles.slice(0,1,3,4));
     const [hover, setHover] = useState(false);
+
     const [isCheckedAd, setIsCheckedAd] = useState(false);
     const [rolesaddAd, setRolesAddAd] = useState(roles.slice(1,2,4));
     const [hoverAd, setHoverAd] = useState(false);
@@ -20,6 +22,14 @@ import { roles } from "../Data/Data";
     const [isCheckedE, setIsCheckedE] = useState(false);
     const [rolesaddE, setRolesAddE] = useState(roles.slice(0,4,4,4));
     const [hoverE, setHoverE] = useState(false);
+    const [isCheckedi, setIsCheckedi] = useState(false);
+    const [rolesaddi, setRolesAddi] = useState(roles.slice(0,4));
+    const [hoveri, setHoveri] = useState(false);
+
+    const [click, setClick] = useState(false);
+    const [clickA, setClickA] = useState(false);
+    const [clickG, setClickG] = useState(false);
+    const [clickS, setClickS] = useState(false);
   
     const handleOverE =  () => {
       setIsCheckedE(!isCheckedE)
@@ -187,6 +197,45 @@ import { roles } from "../Data/Data";
   setRolesAddS(rolesaddS);
 }
 
+//Cuando se hace mouseover sobre el nombre de un permiso, aparecerá en frente del mismo un checkbox
+//que dará la posibilidad de asignar o quitar dicho permiso a todos los roles.
+
+const handleOveri =  () => {
+  setIsCheckedi(!isCheckedi)
+  
+   }
+   
+     const handleventi = () => {
+      rolesaddi.map( rol => {
+       if (isCheckedi == false){
+         console.log(isCheckedi)
+         return {
+           ...rol,
+            insert: rol.insert = "",
+            update: rol.insert = "",
+            delete: rol.insert = "",
+            modify: rol.insert = ""
+            }
+       }else if(isCheckedi){
+         console.log(isCheckedi)
+         return {
+           ...rol,
+            insert: rol.insert = "X",
+            update: rol.insert = "X",
+            delete: rol.insert = "X",
+            modify: rol.insert = "X"
+     };
+   }
+ });
+ // Vuelve a renderizar con el nuevo _array_
+  setRolesAddi(rolesaddi);
+}
+
+//Cuando se hace un mouseover sobre el nombre del rol aparecerá en el extremo derecho de la celda un 
+//latón o ícono de eliminación que permitirá borrar el rol.
+
+
+
     return (
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
@@ -239,9 +288,27 @@ import { roles } from "../Data/Data";
                         />
                         </div>
                         }
-                        </div>
-                      
-                       <a className="text-sm -mr-3">{permissions[0].perm_in}</a>  
+                         </div>
+                        <div className="text-sm mt-4 text-slate-700" onPointerEnter={() => setHoveri(true)}
+                      onPointerLeave={() => setHoveri(false)}>
+                       {hoveri == false ? 
+                       <p>
+                        {permissions[0].perm_in}
+                        </p> 
+                        :
+                        
+                        <input
+                         id="idi"
+                         name="insert"
+                         type="checkbox"
+                         checked={isCheckedi}
+                         onClick={handleventi}
+                         onChange={ handleOveri}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        
+                        }
+                        </div>  
                         </span>  
                         </td>
                       <td className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
@@ -272,17 +339,18 @@ import { roles } from "../Data/Data";
                         </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 text-center">
                       <span className="mb-5 text-slate-950 whitespace-nowrap p-4 text-s text-center font-medium">
-                      <p className="text-xl p-2">{permissions[0].entity}</p> <a className="text-sm -mr-3">{permissions[0].perm_up}</a> </span> 
+                      <p className="text-xl p-2">{permissions[0].entityDB}</p> <a className="text-sm -mr-3">{permissions[0].perm_up}</a> </span> 
                        </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 text-center">
                       <span className="mb-5 text-slate-950 whitespace-nowrap p-4 text-s text-center font-medium">
-                      <p className="text-xl p-2">{permissions[0].entity}</p> <a className="text-sm -mr-3">{permissions[0].perm_mo}</a>  </span>
+                      <p className="text-xl p-2">{permissions[0].entityG}</p> <a className="text-sm -mr-3">{permissions[0].perm_mo}</a>  </span>
                         </td>
                     </tr>    
                 </thead>
                 
                 <tbody className="divide-y divide-gray-200 bg-white">
-
+                {click == false
+                        ?  
                 <tr className="divide-x divide-gray-200">
                 <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHover(true)}
                        onPointerLeave={() => setHover(false)}>
@@ -291,7 +359,7 @@ import { roles } from "../Data/Data";
                         {roles[0].role}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id"
                          name="admin"
@@ -301,6 +369,9 @@ import { roles } from "../Data/Data";
                          onChange={ handleOver}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClick(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                      
@@ -320,8 +391,13 @@ import { roles } from "../Data/Data";
                     {roles[0].delete}
                     </td>
                  </tr>
+                      :
+                      ""
+                       }
+                
+                {clickA == false
+                        ? 
                  <tr className="divide-x divide-gray-200">
-                    
                  <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverAd(true)}
                        onPointerLeave={() => setHoverAd(false)}>
                     {hoverAd == false ? 
@@ -329,7 +405,7 @@ import { roles } from "../Data/Data";
                         {roles[1].role}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id1"
                          name="admin1"
@@ -339,6 +415,9 @@ import { roles } from "../Data/Data";
                          onChange={ handleOverAd}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickA(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                     </td>
@@ -354,8 +433,15 @@ import { roles } from "../Data/Data";
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[1].delete}
                     </td>
-                 </tr>
-                 <tr className="divide-x divide-gray-200">
+                    </tr>
+                        : 
+                        ""
+                        }
+
+                        
+                        {clickG == false
+                        ? 
+                        <tr className="divide-x divide-gray-200">
                  <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverG(true)}
                        onPointerLeave={() => setHoverG(false)}>
                     {hoverG == false ? 
@@ -363,7 +449,7 @@ import { roles } from "../Data/Data";
                         {roles[2].role}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id"
                          name="admin"
@@ -373,6 +459,9 @@ import { roles } from "../Data/Data";
                          onChange={ handleOverG}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickG(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                      
@@ -389,7 +478,13 @@ import { roles } from "../Data/Data";
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[2].delete}
                     </td>
-                 </tr>
+                    </tr>
+                        : 
+                        ""
+                        } 
+                 
+                 {clickS == false
+                        ? 
                     <tr className="divide-x divide-gray-200">
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverS(true)}
                        onPointerLeave={() => setHoverS(false)}>
@@ -398,7 +493,7 @@ import { roles } from "../Data/Data";
                         {roles[3].role}
                         </p> 
                         :
-                        
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id"
                          name="admin"
@@ -408,7 +503,10 @@ import { roles } from "../Data/Data";
                          onChange={ handleOverS}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
-                        
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickS(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
+                        </div>
                         }
                     </td>
 
@@ -425,7 +523,12 @@ import { roles } from "../Data/Data";
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[3].delete}
                     </td>
-                 </tr>
+                      </tr>
+                        : 
+                        ""
+                 }
+                    
+                    
                  
                 </tbody>
               </table>
