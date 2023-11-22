@@ -19,23 +19,101 @@ import { addListener } from "@reduxjs/toolkit";
     const [isCheckedS, setIsCheckedS] = useState(false);
     const [rolesaddS, setRolesAddS] = useState(roles.slice(3,4,0));
     const [hoverS, setHoverS] = useState(false);
+
     const [isCheckedE, setIsCheckedE] = useState(false);
     const [rolesaddE, setRolesAddE] = useState(roles.slice(0,4,4,4));
     const [hoverE, setHoverE] = useState(false);
+    const [isCheckedEd, setIsCheckedEd] = useState(false);
+    const [rolesaddEd, setRolesAddEd] = useState(roles.slice(0,4,4,4));
+    const [hoverEd, setHoverEd] = useState(false);
+    const [isCheckedEg, setIsCheckedEg] = useState(false);
+    const [rolesaddEg, setRolesAddEg] = useState(roles.slice(0,4,4,4));
+    const [hoverEg, setHoverEg] = useState(false);
+
     const [isCheckedi, setIsCheckedi] = useState(false);
     const [rolesaddi, setRolesAddi] = useState(roles.slice(0,4));
     const [hoveri, setHoveri] = useState(false);
     const [isCheckedd, setIsCheckedd] = useState(false);
     const [rolesaddd, setRolesAddd] = useState(roles.slice(0,4));
     const [hoverd, setHoverd] = useState(false);
+    const [isCheckedr, setIsCheckedr] = useState(false);
+    const [rolesaddr, setRolesAddr] = useState(roles.slice(0,4));
+    const [hoverr, setHoverr] = useState(false);
+    const [isCheckedb, setIsCheckedb] = useState(false);
+    const [rolesaddb, setRolesAddb] = useState(roles.slice(0,4));
+    const [hoverb, setHoverb] = useState(false);
 
     const [click, setClick] = useState(false);
     const [clickA, setClickA] = useState(false);
     const [clickG, setClickG] = useState(false);
     const [clickS, setClickS] = useState(false);
 
+    const handleOverEd =  () => {
+      setIsCheckedEd(!isCheckedEd)
+      
+       }
+       
+         const handleventEd = () => {
+          rolesaddEd.map( rol => {
+           if (isCheckedEd == false){
+             console.log(isCheckedEd)
+             return {
+               ...rol,
+                insert: rol.modify = "",
+                update: rol.modify = "",
+                delete: rol.modify = "",
+                modify: rol.modify = "",
+                }
+           }else if(isCheckedEd){
+             console.log(isCheckedEd)
+             return {
+               ...rol,
+                insert: rol.modify = "X",
+                update: rol.modify = "X",
+                delete: rol.modify = "X",
+                modify: rol.modify = "X",
+         };
+       }
+     });
+     // Vuelve a renderizar con el nuevo _array_
+      setRolesAddEd(rolesaddEd);
+   }
 
+   const handleOverEg =  () => {
+    setIsCheckedEg(!isCheckedEg)
+    
+     }
+     
+       const handleventEg = () => {
+        rolesaddEg.map( rol => {
+         if (isCheckedEg == false){
+           console.log(isCheckedEg)
+           return {
+             ...rol,
+              insert: rol.delete = "",
+              update: rol.delete = "",
+              delete: rol.delete = "",
+              modify: rol.delete = "",
+              }
+         }else if(isCheckedEg){
+           console.log(isCheckedEg)
+           return {
+             ...rol,
+              insert: rol.delete = "X",
+              update: rol.delete = "X",
+              delete: rol.delete = "X",
+              modify: rol.delete = "X",
+       };
+     }
+   });
+   // Vuelve a renderizar con el nuevo _array_
+    setRolesAddEg(rolesaddEg);
+ }
   
+    
+    
+
+
     const handleOverE =  () => {
       setIsCheckedE(!isCheckedE)
       
@@ -236,6 +314,68 @@ const handleOveri =  () => {
   setRolesAddi(rolesaddi);
 }
 
+const handleOverr =  () => {
+  setIsCheckedr(!isCheckedr)
+  
+   }
+   
+     const handleventr = () => {
+      rolesaddr.map( rol => {
+       if (isCheckedr == false){
+         console.log(isCheckedr)
+         return {
+           ...rol,
+            insert: rol.modify = "",
+            update: rol.modify = "",
+            delete: rol.modify = "",
+            modify: rol.modify = "",
+            }
+       }else if(isCheckedr){
+         console.log(isCheckedr)
+         return {
+           ...rol,
+            insert: rol.modify = "X",
+            update: rol.modify = "X",
+            delete: rol.modify = "X",
+            modify: rol.modify = "X",
+     };
+   }
+ });
+ // Vuelve a renderizar con el nuevo _array_
+  setRolesAddr(rolesaddr);
+}
+
+const handleOverb =  () => {
+  setIsCheckedb(!isCheckedb)
+  
+   }
+   
+     const handleventb = () => {
+      rolesaddb.map( rol => {
+       if (isCheckedb == false){
+         console.log(isCheckedb)
+         return {
+           ...rol,
+            insert: rol.delete = "",
+            update: rol.delete = "",
+            delete: rol.delete = "",
+            modify: rol.delete = "",
+            }
+       }else if(isCheckedb){
+         console.log(isCheckedb)
+         return {
+           ...rol,
+            insert: rol.delete = "X",
+            update: rol.delete = "X",
+            delete: rol.delete = "X",
+            modify: rol.delete = "X",
+     };
+   }
+ });
+ // Vuelve a renderizar con el nuevo _array_
+  setRolesAddb(rolesaddb);
+}
+
 const handleOverd =  () => {
   setIsCheckedd(!isCheckedd)
   
@@ -282,6 +422,9 @@ const handleOverd =  () => {
             </p>
             <p className="mt-2 text-sm text-gray-700">
             Email:jlopezhdez94@gmail.com
+            </p>
+            <p className="mt-2 text-sm text-gray-700">
+            Telegram:@wordpressjet
             </p>
            
           </div>
@@ -370,10 +513,6 @@ const handleOverd =  () => {
                         }
                         </div> 
                           
-                      {/* <a className="text-sm -mr-3">
-                        {permissions[0].perm_de}
-                        
-                      </a>  */}
                       <div className="text-sm mt-4 text-slate-700" onPointerEnter={() => setHoverd(true)}
                       onPointerLeave={() => setHoverd(false)}>
                        {hoverd == false ? 
@@ -395,14 +534,94 @@ const handleOverd =  () => {
 
 
                       </span>
-                        </td>
+                      </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 text-center">
                       <span className="mb-5 text-slate-950 whitespace-nowrap p-4 text-s text-center font-medium">
-                      <p className="text-xl p-2">{permissions[0].entityDB}</p> <a className="text-sm -mr-3">{permissions[0].perm_up}</a> </span> 
+                      <div className="text-xl p-2" onPointerEnter={() => setHoverEd(true)}
+                         onPointerLeave={() => setHoverEd(false)}>
+                         {hoverEd == false ? 
+                       <p>
+                        {permissions[0].entityDB}
+                        </p> 
+                        :
+                        <div className="">
+                        <input
+                         id="id1"
+                         name="entitys"
+                         type="checkbox"
+                         checked={isCheckedEd}
+                         onClick={handleventEd}
+                         onChange={ handleOverEd}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        </div>
+                        }
+                        </div>  
+                        
+                        <div className="text-sm mt-4 text-slate-700" onPointerEnter={() => setHoverr(true)}
+                      onPointerLeave={() => setHoverr(false)}>
+                       {hoverr == false ? 
+                       <p>
+                        {permissions[0].perm_up}
+                       </p> 
+                        :
+                        <input
+                         id="idi"
+                         name="insert"
+                         type="checkbox"
+                         checked={isCheckedr}
+                         onClick={handleventr}
+                         onChange={ handleOverr}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        }
+                        </div>  
+                      </span> 
                        </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0 text-center">
                       <span className="mb-5 text-slate-950 whitespace-nowrap p-4 text-s text-center font-medium">
-                      <p className="text-xl p-2">{permissions[0].entityG}</p> <a className="text-sm -mr-3">{permissions[0].perm_mo}</a>  </span>
+                      
+                      <div className="text-xl p-2" onPointerEnter={() => setHoverEg(true)}
+                         onPointerLeave={() => setHoverEg(false)}>
+                         {hoverEg == false ? 
+                       <p>
+                        {permissions[0].entityG}
+                        </p> 
+                        :
+                        <div className="">
+                        <input
+                         id="id1"
+                         name="entitysg"
+                         type="checkbox"
+                         checked={isCheckedEg}
+                         onClick={handleventEg}
+                         onChange={ handleOverEg}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        </div>
+                        }
+                        </div> 
+                       
+                      <div className="text-sm mt-4 text-slate-700" onPointerEnter={() => setHoverb(true)}
+                      onPointerLeave={() => setHoverb(false)}>
+                       {hoverb == false ? 
+                       <p>
+                        {permissions[0].perm_mo}
+                       </p> 
+                        :
+                        <input
+                         id="idi"
+                         name="insert"
+                         type="checkbox"
+                         checked={isCheckedb}
+                         onClick={handleventb}
+                         onChange={ handleOverb}
+                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        }
+                        </div>  
+                        
+                        </span>
                         </td>
                     </tr>    
                 </thead>
@@ -411,7 +630,7 @@ const handleOverd =  () => {
                 {click == false
                         ?  
                 <tr className="divide-x divide-gray-200">
-                <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHover(true)}
+                <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHover(true)}
                        onPointerLeave={() => setHover(false)}>
                     {hover == false ? 
                        <p>
@@ -436,17 +655,17 @@ const handleOverd =  () => {
                      
                     </td>
                    
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[0].insert}
                     </td>
 
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[0].update}
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[0].modify}
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[0].delete}
                     </td>
                  </tr>
@@ -457,7 +676,7 @@ const handleOverd =  () => {
                 {clickA == false
                         ? 
                  <tr className="divide-x divide-gray-200">
-                 <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverAd(true)}
+                 <td scope="col" className=" whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverAd(true)}
                        onPointerLeave={() => setHoverAd(false)}>
                     {hoverAd == false ? 
                        <p>
@@ -501,7 +720,7 @@ const handleOverd =  () => {
                         {clickG == false
                         ? 
                         <tr className="divide-x divide-gray-200">
-                 <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverG(true)}
+                 <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer" onPointerEnter={() => setHoverG(true)}
                        onPointerLeave={() => setHoverG(false)}>
                     {hoverG == false ? 
                        <p>
@@ -525,16 +744,16 @@ const handleOverd =  () => {
                         }
                      
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[2].insert}
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[2].update}
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[2].modify}
                     </td>
-                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <td scope="col" className="bg-gray-100 whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     {roles[2].delete}
                     </td>
                     </tr>
