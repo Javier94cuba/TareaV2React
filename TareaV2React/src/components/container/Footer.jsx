@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="mt-20 text-blue-500 flex items-center justify-center">
         <a target="_blank" href="https://github.com/Javier94cuba/Tarea_v2">
-        <Button  text={"Github"} img_alt={github}/>
+        <Button  text={"Repositorio Github"} img_alt={github}/>
         </a>
       </footer>
   )
