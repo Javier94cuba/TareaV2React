@@ -407,6 +407,12 @@ const handleOverd =  () => {
   setRolesAddd(rolesaddd);
 }
 
+//
+const save = () => {
+  const result= roles.concat(permissions)
+  console.table(result)
+}
+
 //Cuando se hace un mouseover sobre el nombre del rol aparecerá en el extremo derecho de la celda un 
 //latón o ícono de eliminación que permitirá borrar el rol.
 
@@ -431,11 +437,12 @@ const handleOverd =  () => {
           <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
             <button
               type="button"
+              onClick={save}
               className="block rounded-md bg-indigo-600 px-8 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
-            </button>
-          </div>
+            </button>  
+            </div>
         </div>
         <div className="mt-8 flow-root">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -455,7 +462,7 @@ const handleOverd =  () => {
                         {permissions[0].entity}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id"
                          name="entity"
@@ -465,6 +472,9 @@ const handleOverd =  () => {
                          onChange={ handleOverE}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                          </div>
@@ -475,6 +485,7 @@ const handleOverd =  () => {
                         {permissions[0].perm_in}
                        </p> 
                         :
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="idi"
                          name="insert"
@@ -484,7 +495,10 @@ const handleOverd =  () => {
                          onChange={ handleOveri}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
-                        
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
+                        </div>
                         }
                         </div>  
 
@@ -499,7 +513,7 @@ const handleOverd =  () => {
                         {permissions[0].entity}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id1"
                          name="entitys"
@@ -509,6 +523,9 @@ const handleOverd =  () => {
                          onChange={ handleOverE}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                         </div> 
@@ -520,6 +537,7 @@ const handleOverd =  () => {
                         {permissions[0].perm_de}
                        </p> 
                         :
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="idi"
                          name="insert"
@@ -529,6 +547,10 @@ const handleOverd =  () => {
                          onChange={ handleOverd}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickA(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
+                        </div>
                         }
                         </div> 
 
@@ -544,7 +566,7 @@ const handleOverd =  () => {
                         {permissions[0].entityDB}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id1"
                          name="entitys"
@@ -554,6 +576,9 @@ const handleOverd =  () => {
                          onChange={ handleOverEd}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                         </div>  
@@ -565,6 +590,7 @@ const handleOverd =  () => {
                         {permissions[0].perm_up}
                        </p> 
                         :
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="idi"
                          name="insert"
@@ -574,6 +600,10 @@ const handleOverd =  () => {
                          onChange={ handleOverr}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickA(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
+                        </div>
                         }
                         </div>  
                       </span> 
@@ -588,7 +618,7 @@ const handleOverd =  () => {
                         {permissions[0].entityG}
                         </p> 
                         :
-                        <div className="">
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="id1"
                          name="entitysg"
@@ -598,6 +628,9 @@ const handleOverd =  () => {
                          onChange={ handleOverEg}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
                         </div>
                         }
                         </div> 
@@ -609,6 +642,7 @@ const handleOverd =  () => {
                         {permissions[0].perm_mo}
                        </p> 
                         :
+                        <div className="flex justify-center items-center space-x-5">
                         <input
                          id="idi"
                          name="insert"
@@ -618,6 +652,10 @@ const handleOverd =  () => {
                          onChange={ handleOverb}
                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" onClick={() => setClickA(true)}>
+                        <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clipRule="evenodd" />
+                        </svg>
+                        </div>
                         }
                         </div>  
                         
@@ -805,9 +843,29 @@ const handleOverd =  () => {
                         : 
                         ""
                  }
+
+                 <tr className="divide-x divide-gray-200">
+                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer">
+                       <div className="flex justify-center items-center space-x-5"> 
+                        <p>New Role</p> 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      </div> 
+                    </td>
+                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     
+                    </td>
+                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     
-                 
+                    </td>
+                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    
+                    </td>
+                    <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                   
+                    </td>
+                      </tr>
                 </tbody>
               </table>
             </div>
