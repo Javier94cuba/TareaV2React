@@ -893,6 +893,7 @@ const save = () => {
                           name="search"
                           autoComplete="off"
                            value={Addrole}
+                           onkeypress="event.charCode != 39  " 
                            placeholder="Add role"
                            onChange={ev => setAddrole(ev.target.value)}
                          />
