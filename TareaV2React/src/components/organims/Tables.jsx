@@ -42,11 +42,19 @@ import { roles } from "../Data/Data";
     const [isCheckedb, setIsCheckedb] = useState(false);
     const [rolesaddb, setRolesAddb] = useState(roles.slice(0,4));
     const [hoverb, setHoverb] = useState(false);
-
+    const [change, setChange] = useState(false);
     const [click, setClick] = useState(false);
     const [clickA, setClickA] = useState(false);
     const [clickG, setClickG] = useState(false);
     const [clickS, setClickS] = useState(false);
+
+    const [Addrole, setAddrole] = useState("");
+
+    // const handlesetChange = () =>
+    // {
+    //  setChange(!change)
+    //  console.log({change})
+    // }
 
     const handleOverEd =  () => {
       setIsCheckedEd(!isCheckedEd)
@@ -56,7 +64,6 @@ import { roles } from "../Data/Data";
          const handleventEd = () => {
           rolesaddEd.map( rol => {
            if (isCheckedEd == false){
-             console.log(isCheckedEd)
              return {
                ...rol,
                 insert: rol.modify = "",
@@ -65,7 +72,6 @@ import { roles } from "../Data/Data";
                 modify: rol.modify = "",
                 }
            }else if(isCheckedEd){
-             console.log(isCheckedEd)
              return {
                ...rol,
                 insert: rol.modify = "X",
@@ -87,7 +93,7 @@ import { roles } from "../Data/Data";
        const handleventEg = () => {
         rolesaddEg.map( rol => {
          if (isCheckedEg == false){
-           console.log(isCheckedEg)
+          
            return {
              ...rol,
               insert: rol.delete = "",
@@ -96,7 +102,7 @@ import { roles } from "../Data/Data";
               modify: rol.delete = "",
               }
          }else if(isCheckedEg){
-           console.log(isCheckedEg)
+           
            return {
              ...rol,
               insert: rol.delete = "X",
@@ -122,7 +128,7 @@ import { roles } from "../Data/Data";
          const handleventE = () => {
           rolesaddE.map( rol => {
            if (isCheckedE == false){
-             console.log(isCheckedE)
+           
              return {
                ...rol,
                 insert: rol.insert = "",
@@ -135,7 +141,7 @@ import { roles } from "../Data/Data";
                 modify: rol.update = "",
                 }
            }else if(isCheckedE){
-             console.log(isCheckedE)
+             
              return {
                ...rol,
                 insert: rol.insert = "X",
@@ -423,14 +429,18 @@ const save = () => {
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <h1 className="text-base font-semibold leading-6 text-gray-900">Info de contacto</h1>
-            <p className="mt-2 text-sm text-gray-700">
-            Cell: 58386901
+            <p className="mt-2 text-sm text-gray-700 flex">
+            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+</svg>
+
+  : +(53) 58386901
             </p>
-            <p className="mt-2 text-sm text-gray-700">
-            Email:jlopezhdez94@gmail.com
-            </p>
-            <p className="mt-2 text-sm text-gray-700">
-            Telegram:@wordpressjet
+            <p className="mt-2 text-sm text-gray-700 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg> : jlopezhdez94@gmail.com
+
             </p>
            
           </div>
@@ -844,14 +854,16 @@ const save = () => {
                         ""
                  }
 
-                 <tr className="divide-x divide-gray-200">
+                   {Addrole === ""
+                    ? 
+                    <>
+                    </>
+                    : 
+                    <tr className="divide-x divide-gray-200">
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer">
-                       <div className="flex justify-center items-center space-x-5"> 
-                        <p>Add Role</p> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      </div> 
+                    <div className="flex justify-center items-center space-x-5">
+                      {Addrole}
+                    </div> 
                     </td>
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
                     
@@ -860,12 +872,57 @@ const save = () => {
                     
                     </td>
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
-                    
+                    X
                     </td>
                     <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    X
+                    </td>
+                    </tr>
+                    }
                    
-                    </td>
-                      </tr>
+                   {
+                   change == false
+                   ?
+                   <tr className="divide-x divide-gray-200">
+                   <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center cursor-pointer">
+                      <div className="flex justify-center items-center space-x-5"> 
+                       <form>
+                         <input
+                         className="w-20 p-1"
+                          type='text'
+                          name="search"
+                          autoComplete="off"
+                           value={Addrole}
+                           placeholder="Add role"
+                           onChange={ev => setAddrole(ev.target.value)}
+                         />
+                         <button type="submit"></button>
+                         
+                         </form> 
+                       <svg onClick={() => setChange(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                       </svg>
+                     </div> 
+                   </td>
+                   <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                   </td>
+                   <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                   
+                   </td>
+                   <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                   
+                   </td>
+                   <td scope="col" className="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                   
+                   </td>
+                     </tr>
+                     :
+
+                  <p></p>
+                   }
+                     
+                 
+
                 </tbody>
               </table>
             </div>
